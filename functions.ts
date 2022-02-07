@@ -11,3 +11,29 @@ const subtract = (a: number, b: number): number => {
 function divide(a: number, b: number): number {
   return a / b;
 }
+
+/* never function type exist
+    for when you will never reach the end of a function
+    like throw an error
+    different from void
+    void doesn't have a return or returns null or undefined 
+ */
+function logError(message: string): never {
+  throw Error(message);
+}
+
+const weather = {
+  date: new Date(),
+  weather: "sunny",
+};
+
+const logWeather = ({
+  date,
+  weather,
+}: {
+  date: Date;
+  weather: string;
+}): void => {
+  console.log(date);
+  console.log(weather);
+};
