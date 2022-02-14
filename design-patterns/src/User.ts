@@ -1,0 +1,1 @@
+/* file that handle import of classes get their first letter capitalize */
