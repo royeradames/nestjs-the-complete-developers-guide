@@ -32,3 +32,6 @@ console.log(vehicle.color);
       - This method can be called by other methods in this class, or by other methods in child classes
     * Doesn't add layer of security. It only limits other devs on what methods they can called
  */
+
+/*
+ * Interfaces + classes = how we get really strong code reuse in TS */
