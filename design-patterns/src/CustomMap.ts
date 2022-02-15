@@ -1,6 +1,3 @@
-import { Company } from "./Company";
-import { User } from "./User";
-
 /* Instructions to every other class
     on how they can be an argument to 'addMarker
     Great because if a class has the method listed then they can proceed to be a marker
