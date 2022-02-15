@@ -18,6 +18,9 @@ export class CustomMap {
   private googleMap: google.maps.Map;
 
   constructor(divId: string) {
+    /* clicking in MAP send you to a d.ts file
+     * d.ts file are types files for packages
+     */
     this.googleMap = new google.maps.Map(document.getElementById(divId), {
       zoom: 1,
       center: {
