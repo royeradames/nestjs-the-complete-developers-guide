@@ -27,7 +27,8 @@ export class CustomMap {
     });
   }
 
-  /* doesn't scale well to all classes that want to use this method because it leads to a long or statements */
+  /* inverse the dependency, inputs need to meet this class expected inputs
+  doesn't scale well to all classes that want to use this method because it leads to a long or statements */
   addMarker(mappable: Mappable): void {
     const marker = new google.maps.Marker({
       map: this.googleMap,
