@@ -3,12 +3,13 @@
     Great because if a class has the method listed then they can proceed to be a marker
     It's like a single value can have multiple types
    */
-class Mappable {
+export class Mappable {
   location: {
     lat: number;
     lng: number;
   };
   markerContent: () => string;
+  color: string;
 }
 
 /* Private modifier

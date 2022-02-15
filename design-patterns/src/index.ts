@@ -1,6 +1,4 @@
 import { Company } from "./Company";
-// import { User } from "./User";
-
 import { CustomMap } from "./CustomMap";
 import { User } from "./User";
 
