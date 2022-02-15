@@ -27,12 +27,19 @@ export class CustomMap {
 
   /* doesn't scale well to all classes that want to use this method because it leads to a long or statements */
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng,
       },
+    });
+
+    marker.addListener("click", () => {
+      const infoWindow = new google.maps.InfoWindow();
+
+      infoWindow.setContent("Hi there!");
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
