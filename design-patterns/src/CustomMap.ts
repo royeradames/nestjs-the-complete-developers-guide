@@ -8,6 +8,7 @@ class Mappable {
     lat: number;
     lng: number;
   };
+  markerContent: () => string;
 }
 
 /* Private modifier
@@ -38,7 +39,7 @@ export class CustomMap {
     marker.addListener("click", () => {
       const infoWindow = new google.maps.InfoWindow();
 
-      infoWindow.setContent("Hi there!");
+      infoWindow.setContent(mappable.markerContent());
       infoWindow.open(this.googleMap, marker);
     });
   }
