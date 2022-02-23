@@ -21,9 +21,21 @@ export class UsersService {
   create(email: string, password: string) {
     /* see typeorm entity methods image */
     const user = this.userRepo.create({ email, password });
-    /* at the moment you can pass down the create data into save and it will work just fine 
+    /* 
+      at the moment you can pass down the create { email, password } into save and it will work just fine 
       Note: validation through the entity is possible.
     */
     return this.userRepo.save(user);
   }
+
+  findOne(id: number) {
+    // return one record or null
+    return this.userRepo.findOne(id);
+  }
+  find(email: string) {
+    // return a list of records or an empty list (list = array)
+    return this.userRepo.find({ email });
+  }
+  update() {}
+  remove() {}
 }

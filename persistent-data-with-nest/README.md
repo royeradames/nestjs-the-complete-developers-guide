@@ -19,3 +19,6 @@ Immigration is a very carefully designed little piece of code that somehow chang
 There is 3 or more ways to do things in typeorm.
 
 ![options](pictures/typeorm%20options/options.png)
+
+save and remove run entity hooks
+insert, update, delete don't run entity hooks
