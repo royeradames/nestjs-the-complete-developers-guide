@@ -29,9 +29,11 @@ export class UsersService {
     return this.userRepo.save(user);
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     // return one record or null
-    return this.userRepo.findOne(id);
+    const user = await this.userRepo.findOne(id);
+    if (!user) throw new NotFoundException(`User ${id} not found`);
+    return user;
   }
   find(email: string) {
     // return a list of records or an empty list (list = array)
