@@ -13,3 +13,9 @@ Immigration is a very carefully designed little piece of code that somehow chang
 `synchronize: true` makes the decorators do the migrations automatically 
 
 ![what-the-decorators-do-in-synchronize-true](pictures/undestanding%20typeorm%20decorators/what-the-decorators-do-in-synchronize-true.png)
+
+# options
+
+There is 3 or more ways to do things in typeorm.
+
+![options](pictures/typeorm%20options/options.png)
