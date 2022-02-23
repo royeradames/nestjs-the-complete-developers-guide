@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
@@ -24,6 +24,7 @@ export class UsersService {
     /* 
       at the moment you can pass down the create { email, password } into save and it will work just fine 
       Note: validation through the entity is possible.
+      avoid so that entity hooks run
     */
     return this.userRepo.save(user);
   }
@@ -36,6 +37,23 @@ export class UsersService {
     // return a list of records or an empty list (list = array)
     return this.userRepo.find({ email });
   }
-  update() {}
+  /* 
+    Partial 
+    - ts include code 
+    - makes all types optional
+    - none selected can also be ok
+  */
+  async update(id: number, attrs: Partial<User>) {
+    /* using save to be able to run entity hooks will require 2 trips to the database
+      one to get the current data from the db and 
+      the last one to update the data row
+     */
+    const user = await this.findOne(id);
+    if (!user) throw new NotFoundException(`User ${id} not found`);
+
+    /* Overwrite all of attrs properties with user */
+    Object.assign(user, attrs);
+    return this.userRepo.save(user);
+  }
   remove() {}
 }
