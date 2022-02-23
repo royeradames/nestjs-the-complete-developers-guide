@@ -7,6 +7,7 @@ async function bootstrap() {
 
   /* allow validation pipe through the app */
   app.useGlobalPipes(
+    /* activates class-validator decorators */
     new ValidationPipe({
       /* remove additional properties that are not listed in the dto */
       whitelist: true,
