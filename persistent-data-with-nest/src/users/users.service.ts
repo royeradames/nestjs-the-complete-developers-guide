@@ -53,7 +53,15 @@ export class UsersService {
 
     /* Overwrite all of attrs properties with user */
     Object.assign(user, attrs);
+
+    /* save works with an entity */
     return this.userRepo.save(user);
   }
-  remove() {}
+  async remove(id: number) {
+    const user = await this.findOne(id);
+    if (!user) throw new NotFoundException(`User ${id} not found`);
+
+    /* remove works with entity */
+    return this.userRepo.remove(user);
+  }
 }

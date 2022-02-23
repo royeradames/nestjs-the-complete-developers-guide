@@ -20,5 +20,8 @@ There is 3 or more ways to do things in typeorm.
 
 ![options](pictures/typeorm%20options/options.png)
 
-save and remove run entity hooks
-insert, update, delete don't run entity hooks
+save(entity) and remove(entity) run entity hooks
+insert(Data), update(Data), delete(id) don't run entity hooks
+
+Running entity hooks cost doing 2 trips to the database. Requires getting the current database data of the field then using the method.
+Only doing 1 trip to the database doesn't allow entity hooks to run. It only works directly with the database.
