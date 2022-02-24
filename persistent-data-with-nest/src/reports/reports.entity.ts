@@ -15,7 +15,7 @@ export class Reports {
   model: string;
 
   @Column()
-  year: Date;
+  year: number;
 
   @Column()
   mileage: number;
