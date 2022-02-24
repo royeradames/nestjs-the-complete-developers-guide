@@ -14,6 +14,8 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserDto } from './dtos/user.dto';
 import { UsersService } from './users.service';
 
+/* different serialize can be added to a specific route with a responseDto */
+@Serialize(UserDto) // remove password for all fields
 @Controller('auth')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -22,10 +24,8 @@ export class UsersController {
     return this.usersService.create(body.email, body.password);
   }
 
-  @Serialize(UserDto)
   @Get('/:id')
   findUser(@Param('id') id: string) {
-    console.log('handler is running');
     return this.usersService.findOne(parseInt(id));
   }
 
