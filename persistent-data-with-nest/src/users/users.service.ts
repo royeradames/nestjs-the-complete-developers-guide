@@ -35,9 +35,13 @@ export class UsersService {
     if (!user) throw new NotFoundException(`User ${id} not found`);
     return user;
   }
-  find(email: string) {
+  find(email?: string) {
     // return a list of records or an empty list (list = array)
-    return this.userRepo.find({ email });
+    if (email) return this.userRepo.find({ email });
+    // return this.userRepo.find({
+    //   where: { email: { useParameter: email, value: email } },
+    // });
+    return this.userRepo.find();
   }
   /* 
     Partial 

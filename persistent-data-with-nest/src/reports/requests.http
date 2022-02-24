@@ -1,5 +1,5 @@
 ### Create new report
-POST http://localhost:3000/reports
+POST http://localhost:3000/reports/1
 content-type: application/json
 
 {
@@ -11,3 +11,4 @@ content-type: application/json
   "latitude": 0,
   "price": 500000
 }
+

@@ -30,7 +30,7 @@ export class UsersController {
   }
 
   @Get()
-  findAllUsers(@Query('email') email: string) {
+  findAllUsers(@Query('email') email?: string) {
     return this.usersService.find(email);
   }
 
