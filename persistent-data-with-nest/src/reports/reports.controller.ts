@@ -5,8 +5,10 @@ import { ReportsService } from './reports.service';
 @Controller('reports')
 export class ReportsController {
   constructor(private reportService: ReportsService) {}
+
+  // missing login guard due to skipping chapters
   @Post()
   createReport(@Body() body: CreateReportDto) {
-    return this.reportService.create(body);
+    return this.reportService.createReport(body);
   }
 }

@@ -5,7 +5,7 @@ import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
-import { Reports } from './reports/reports.entity';
+import { Report } from './reports/reports.entity';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { Reports } from './reports/reports.entity';
       type: 'sqlite',
       database: 'db.sqlite',
       /* Connect the entity to the root connection (in app module) */
-      entities: [User, Reports],
+      entities: [User, Report],
       /* for handling the migrations base on the current entity files
        * deletes and updates columns on the fly
        * use in dev but not in prod
