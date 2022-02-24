@@ -29,6 +29,7 @@ export class Report {
 
   /* when sync is on ManyToOne causes a change
     adds the other relationship key to the database
+    * ❗had to delete the database after adding this field
    */
   @ManyToOne(() => User, (user) => user.reports)
   user: User;
