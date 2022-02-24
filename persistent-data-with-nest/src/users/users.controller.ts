@@ -1,6 +1,5 @@
 import {
   Body,
-  ClassSerializerInterceptor,
   Controller,
   Delete,
   Get,
@@ -10,6 +9,7 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
+import { SerializeInterceptor } from 'src/interceptors/serialize.interceptor';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
@@ -22,9 +22,10 @@ export class UsersController {
     return this.usersService.create(body.email, body.password);
   }
 
-  @UseInterceptors(ClassSerializerInterceptor) // applies the exclude from user entity exclude decorator
+  @UseInterceptors(SerializeInterceptor)
   @Get('/:id')
   findUser(@Param('id') id: string) {
+    console.log('handler is running');
     return this.usersService.findOne(parseInt(id));
   }
 
