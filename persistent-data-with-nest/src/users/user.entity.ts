@@ -1,9 +1,11 @@
+import { Report } from 'src/reports/reports.entity';
 import {
   AfterInsert,
   AfterRemove,
   AfterUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 /* 
@@ -19,6 +21,13 @@ export class User {
 
   @Column()
   password: string;
+
+  /* 
+    1. A function that returns the entity of the other entity
+    2. a function that is an instance of the other instance that points to the field that makes the relationship possible.
+   */
+  @OneToMany(() => Report, (report) => report.user, { eager: true })
+  reports: Report[];
 
   /* 
   *entity hooks

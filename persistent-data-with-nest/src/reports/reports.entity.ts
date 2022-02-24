@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/users/user.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('report')
 export class Report {
@@ -25,4 +26,10 @@ export class Report {
 
   @Column()
   latitude: number;
+
+  /* when sync is on ManyToOne causes a change
+    adds the other relationship key to the database
+   */
+  @ManyToOne(() => User, (user) => user.reports)
+  user: User;
 }
