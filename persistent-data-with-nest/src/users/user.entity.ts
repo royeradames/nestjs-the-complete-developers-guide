@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import {
   AfterInsert,
   AfterRemove,
@@ -18,6 +19,7 @@ export class User {
   email: string;
 
   @Column()
+  @Exclude() //nestjs solution for not showing your password when returning user entity data
   password: string;
 
   /* 
