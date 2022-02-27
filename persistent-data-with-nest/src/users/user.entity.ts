@@ -11,7 +11,7 @@ import {
 /* 
 * Create an entity file, and create a class in it that lists all the properties that your entity will have
 The decorators tells typeorm what they are */
-@Entity()
+@Entity('user')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;

@@ -37,3 +37,26 @@ Only doing 1 trip to the database doesn't allow entity hooks to run. It only wor
 @UseInterceptors(ClassSerializerInterceptor) in route
 ![controller](pictures/excluding%20response%20properties/controller.png)
 
+# Migration
+
+We need different settings in the dev, testing, production, and CLI environments.
+
+## omgconfig.json and ormconfig.yaml file 
+are not valid because they don't let you script the migration.
+
+## Environment variables 
+It works for dev and testing.
+doesn't work for production. 
+  Typeorm requires variables with specific names.
+  Our provider will have its own env variables and there is no easy way to redict them.
+
+## ormconfig.ts file
+Not an option becaues Nestjs compiles TS into JS and it breaks 
+
+## ormconfig.js file
+Works for dev.
+- need to load .js files
+
+Fails in test
+ts-jest expects .ts not .js files
+Solution: use env variables to know what . file to load
