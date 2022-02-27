@@ -4,21 +4,27 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email": "royer@gmail.com",
-  "password": "royerdev"
+  "email": "mike@gmail.com",
+  "password": "mikedev"
 }
+# {
+#   "email": "royer@gmail.com",
+#   "password": "royerdev"
+# }
 # {
 #   "email": "asdf@gmail.com",
 #   "password": "asdlfkj"
 # }
 
-### Find a particular user with a given ID
-GET http://localhost:3000/auth/2
+
 
 ### Find all users
 GET http://localhost:3000/auth
 ### Find all users with a given email
 GET http://localhost:3000/auth?email=asdf@gmail.com
+
+### Find a particular user with a given ID
+GET http://localhost:3000/auth/2
 
 ### Delete a particular user
 Delete http://localhost:3000/auth/1

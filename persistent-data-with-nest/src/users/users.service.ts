@@ -1,7 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { UserRepository } from './user.repository';
 
 @Injectable()
 export class UsersService {
@@ -16,8 +17,11 @@ export class UsersService {
     it doesn't play nicely with generics 
     @InjectRepository(User) fixes this
   */
-  constructor(@InjectRepository(User) private userRepo: Repository<User>) {}
+  constructor(
+    @InjectRepository(UserRepository) private userRepo: UserRepository,
+  ) {}
 
+  logger = new Logger('UserService');
   create(email: string, password: string) {
     /* see typeorm entity methods image */
     const user = this.userRepo.create({ email, password });
@@ -36,12 +40,12 @@ export class UsersService {
     return user;
   }
   find(email?: string) {
-    // return a list of records or an empty list (list = array)
-    if (email) return this.userRepo.find({ email });
-    // return this.userRepo.find({
-    //   where: { email: { useParameter: email, value: email } },
-    // });
-    return this.userRepo.find();
+    // const users = this.userRepo.createQueryBuilder();
+    // if (email) users.andWhere('user.email = :email', { email });
+    // return users.getMany();
+    // return this.userRepo.find();
+    this.logger.log('find');
+    return this.userRepo.findUsers(email);
   }
   /* 
     Partial 
